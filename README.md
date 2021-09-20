@@ -48,3 +48,4 @@ A number of scripts will also be needed:
 - bulk tag-apply/remove over files (directory-level ".tags" files must be handled manually)
 - queries to see the tags applied to a specific file
 - enumeration of bare files, optionally creating empty ".tags" for them
+- enumeration of abandoned ".tags" files, optionally allowing for removal
