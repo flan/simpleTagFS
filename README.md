@@ -23,7 +23,7 @@ Tagging syntax will be pretty simple:
 - `-hello` removes any existing tag called "hello"
 - `year=2000` applies a tag called "year" with a value of "2000"; a subsequent `year` tag replaces the previous value and unvalued tags are really like `hello=`
 - `-year=2000` removes any tag called "year" that specifically has a value of "2000", while `-year` would remove the tag regardless of value
-- tags will support spaces and other POSIX-filename-friendly characters, just not leading `-`s because they're reserved for negation
+- tags will support spaces and other POSIX-filename-friendly characters, just not leading `-`s because they're reserved for negation (though this could turn into a trailing `-`, so that the AND and NAND subdirectories show up next to each other in file-managers)
 
 When the VFS component is mounted, its reference directory is recursively scanned for ".tags" files, which are used to populate its own data-map. For efficiency, every directory is populated with a ".simpleTagFS" manifest file that maintains the status of all files within, with mtime/size notes on which files have been processed to reduce IO load and a list of relevant tags, *not* including those inherited from directories, null-character-delimited, one file per line so buffered iterators can parse them efficiently.
 - for each mountpoint, an in-memory data-structure is prepared, which serves as an index of all tagged files within; its contents follow:
