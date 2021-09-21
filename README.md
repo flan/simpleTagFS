@@ -43,7 +43,7 @@ Within these directories, all tags not yet present in the chain will be enumerat
 
 Deleting a file from one of these directories will remove (or set, in the case of negation) the tag associated with the immediate parent, so someone could naively apply a slew of tags to a library, maybe by creating some broad directory trees with per-level composite tagging, and work backwards to the subset that they actually want; this change takes immediate effect in both responsive mode and cached mode (by explicitly triggering a rebuild of the affected directories' .simpleTagFS files and replacing the relevant map-entry as though the inotify signal had been received) and requires another mount option to be specified to allow manipulation.
 
-A number of scripts will also be needed:
+A number of scripts will also be needed (possibly a single mega-script, as an interface to submodules, also handling mount/unmount behaviour):
 - enumerate tags (including counts, to find typos)
 - replace tags
 - some tools that do more complex tag-grouping, like OR and value-based range-handling
