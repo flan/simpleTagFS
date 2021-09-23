@@ -32,6 +32,7 @@ When the VFS component is mounted, its reference directory is recursively scanne
   - for effiiciency, the process of preparing the data-structure and building the .simpleTagFS manifests will likely be the same workflow: iterate over the existing file, iterate over the dentry, and if anything has changed, serialise the new data-structure into the directory
 - to satisfy a query, every matching set in every directory is combined, then the sets are run against each other by boolean logic to produce the final list, used to assemble the synthetic dentry
 - this structure should be pretty fast to populate, since, in the common case, each subdirectory only incurs two read operations: the dentry and the ".simpleTagFS" file; in the event of a change within, an additional read is only needed for each changed file, assuming it doesn't just inherit from the directory tree
+- optional mode that causes directories without a corresponding .tags file to contibute their own name as a tag automatically
 
 There will be two modes of operation, configurable on a per-instance basis: responsive and cached
 - in responsive mode, every subdirectory is tracked by inotify and .simpleTagFS files are recereated for each change, then reloaded into the mount's data-structure; adding and removing directories will be supported
